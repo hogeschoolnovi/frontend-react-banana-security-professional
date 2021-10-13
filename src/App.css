@@ -1,0 +1,113 @@
+/*In dit voorbeeld staat alle CSS in één bestand, dit wil je eigenlijk nooit.
+Om de het begrijpen van de bestaande code zo eenvoudig mogelijk te maken,
+is het voor deze opdracht wel gedaan!*/
+
+/*Algemene button styling*/
+button {
+  border-radius: 4px;
+  border: none;
+  /*color: white;*/
+  padding: 8px 16px;
+  background-color: #f5ab00;
+  color: white;
+  font-weight: bold;
+}
+
+/*Zorgt ervoor dat als twee buttons naast elkaar staan, er altijd ruimte tussen blijft*/
+button + button {
+  margin-left: 8px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a,
+a:visited,
+a:active {
+  color: #0d3b66;
+}
+
+a:hover {
+  color: #ea7e1f;
+}
+
+/*Algemene formulier-styling*/
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #faeab3;
+  padding: 32px;
+  max-width: 300px;
+  border-radius: 4px;
+}
+
+form label {
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 4px 8px;
+  margin: 6px 0;
+}
+
+h2 {
+  margin: 32px 0 24px 0;
+}
+
+.content {
+  margin: 32px;
+}
+
+.form-button {
+  width: 100%;
+}
+
+nav {
+  background-color: #0d3b66;
+  color: white;
+  display: flex;
+  padding: 0 32px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav a,
+nav a:visited,
+nav a:active {
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.logo-container img {
+  width: 40px;
+  margin-right: 8px;
+}
+
+section  {
+  margin: 0 0 50px 0;
+}
+
+/*Zet mij op een element en ik blijf voor altijd draaien!*/
+.loading-icon {
+  width: 16px;
+  height: 16px;
+  animation: rotating 1.5s linear infinite;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
