@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Navigate, Route, Routes } from "react-router-dom";
 import NavBar from './components/NavBar';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
@@ -15,20 +15,13 @@ function App() {
     <>
       <NavBar />
       <div className="content">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/profile">
-            {isAuth ? <Profile /> : <Redirect to="/" />}
-          </Route>
-          <Route exact path="/signin">
-            <SignIn />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Home />}/>
+          <Route path="/profile" element={ isAuth ? <Profile /> : <Navigate to="/" />}/>
+          <Route path="/signin" element={ <SignIn />} />
+          <Route path="/signup" element={<SignUp />}/>
+
+        </Routes>
       </div>
     </>
   );
