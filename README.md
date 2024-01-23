@@ -13,11 +13,7 @@ ingehuurd om de inlog-omgeving helemaal te professionaliseren.
 
 ## Applicatie starten
 
-Als je de opdracht van vorige week afgemaakt hebt, kun je gewoon verder werken in jouw eigen project. Wacht echter nog
-even met het opstarten van jouw project.
-
-Clone eerst de [nep database server](https://github.com/hogeschoolnovi/frontend-fake-server) naar jouw lokale machine.
-Voor je de server kunt gebruiken zul je de dependencies moeten installeren met het commando:
+Als je de opdracht van vorige week afgemaakt hebt, kun je gewoon verder werken in jouw eigen project. Clone eerst de [nep database server](https://github.com/hogeschoolnovi/frontend-fake-server) naar jouw lokale machine. Voor je de server kunt gebruiken zul je de dependencies moeten installeren met het commando:
 
 ```shell
 npm install
@@ -36,7 +32,7 @@ te draaien.
 
 ## Randvoorwaarden
 
-De applicatie heeft op dit moment al vier pagina's, een beveiligde route en een Context de gebruikers in- en uitlogt. Om
+Jouw applicatie heeft op dit moment al vier pagina's, een beveiligde route en een Context de gebruikers in- en uitlogt. Om
 het gebruik van een backend voor het opslaan van gebruikersgegevens en uitgifte van een JWT te veinzen, gebruiken we een
 nep database server. Dit is niets meer dan een javascript projectje die zich, doormiddel van een npm package genaamd
 `json-server-auth`, gedraagt als een backend met REST endpoints wanneer je het project runt. Je kunt het
@@ -101,7 +97,7 @@ const [isAuth, toggleIsAuth] = useState({
 });
 ```
 
-*Tip:* Pak vooral [hoofdstuk 10.3](https://edhub.novi.nl/study/courses/516/content/12828) van de cursus React op EdHub
+*Tip:* Pak vooral hoofdstuk 12.3 van de cursus React Fundamentals op EdHub
 erbij als houvast voor de implementatie van persist on refresh. Wanneer de applicatie opnieuw geladen wordt, gebeurt het
 volgende:
 
