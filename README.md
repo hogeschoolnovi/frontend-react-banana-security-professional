@@ -13,32 +13,11 @@ ingehuurd om de inlog-omgeving helemaal te professionaliseren.
 
 ## Applicatie starten
 
-Als je de opdracht van vorige week afgemaakt hebt, kun je gewoon verder werken in jouw eigen project. Clone eerst de [nep database server](https://github.com/hogeschoolnovi/frontend-fake-server) naar jouw lokale machine. Voor je de server kunt gebruiken zul je de dependencies moeten installeren met het commando:
-
-```shell
-npm install
-```
-
-Om de server te starten hoef je slechts het volgende commando in jouw terminal in te voeren:
-
-```shell
-npm run json:server
-```
-
-Deze server draait op [http://localhost:3000](http://localhost:3000/), wanneer je dit in de browser opent zul je alle
-beschikbare endpoints zien verschijnen. **Let op**: omdat deze server op `localhost:3000` draait is het belangrijk deze
-server te starten vóór je een React-project start. React zal dan automatisch vragen om dat project op een andere poort
-te draaien.
+Als je de opdracht van vorige week afgemaakt hebt, kun je gewoon verder werken in jouw eigen project. 
 
 ## Randvoorwaarden
 
-Jouw applicatie heeft op dit moment al vier pagina's, een beveiligde route en een Context de gebruikers in- en uitlogt. Om
-het gebruik van een backend voor het opslaan van gebruikersgegevens en uitgifte van een JWT te veinzen, gebruiken we een
-nep database server. Dit is niets meer dan een javascript projectje die zich, doormiddel van een npm package genaamd
-`json-server-auth`, gedraagt als een backend met REST endpoints wanneer je het project runt. Je kunt het
-project [hier](https://github.com/hogeschoolnovi/frontend-fake-server)
-clonen. In de README.md van het project staat beschreven hoe je de server kunt starten en welke endpoints er beschikbaar
-zijn. Lees deze documentatie grondig door.
+Als backend gebruiken we de [NOVI Dynamic API](https://novi-backend-api-wgsgz.ondigitalocean.app/) met de aangeleverde JSON-configuratie voor deze opdracht. 
 
 ### 1. Uitbreiden van Context-state
 
@@ -56,24 +35,20 @@ keys worden meegegeven in het context-data-object!
 
 ### 2. Registreren
 
-Een gebruiker kan een nieuw account aanmaken door de invoervelden _emailadres_, _wachtwoord_ en _gebruikersnaam_ in te
-voeren in het registratieformulier. Dit account wordt in de fake server opgeslagen (
-zie [documentatie](https://github.com/hogeschoolnovi/frontend-fake-server#registreren) over het `/register` endpoint).
+Een gebruiker kan een nieuw account aanmaken door de invoervelden _emailadres_ en _wachtwoord_ in te
+voeren in het registratieformulier. Dit account wordt in de NOVI API opgeslagen.
 
 ### 3. Inloggen
 
 Na een succesvolle registratie wordt de gebruiker doorgestuurd naar de login-pagina. De gebruiker kan inloggen door de
-invoervelden _emailadres_ en _wachtwoord_ in te vullen. Deze gegevens worden vervolgens naar de fake server gestuurd.
-Een gebruiker is ingelogd wanneer de fake server jouw POST-request beantwoordt met een JWT (
-zie [documentatie](https://github.com/hogeschoolnovi/frontend-fake-server#inloggen) over het `/login` endpoint).
+invoervelden _emailadres_ en _wachtwoord_ in te vullen. Deze gegevens worden vervolgens naar de NOVI API gestuurd.
+Een gebruiker is ingelogd wanneer de API jouw POST-request beantwoordt met een JWT.
 
 In de Context gebeurt vervolgens het volgende:
 
 1. De JWT wordt in de Local Storage geplaatst;
 2. `isAuth` wordt op `true` gezet;
-3. De gebruikersgegevens worden opgevraagd van de fake-server en in de Context-state gezet onder `user` (
-   zie [documentatie](https://github.com/hogeschoolnovi/frontend-fake-server#gebruikersdetails-opvragen) over
-   het `/600/users/:id` endpoint). Hiervoor zul je de token eerst moeten decoderen;
+3. De gebruikersgegevens worden in de Context-state gezet onder `user`;
 4. De gebruiker wordt doorgestuurd naar de profielpagina.
 
 ### 4. Uitloggen
@@ -102,9 +77,7 @@ erbij als houvast voor de implementatie van persist on refresh. Wanneer de appli
 volgende:
 
 1. Wanneer de applicatie is gemount, wordt er gecheckt of er een token aanwezig is in de Local Storage;
-2. Als dat zo is, zul je de token moeten decoderen om de gebruikersdata op te kunnen vragen  (
-   zie [documentatie](https://github.com/hogeschoolnovi/frontend-fake-server#gebruikersdetails-opvragen) over
-   het `/600/users/:id` endpoint)
+2. Als dat zo is, zul je de token moeten decoderen om de gebruikersdata op te kunnen vragen.
 3. Indien het opvragen van de data succesvol is, doe je het volgende:
     1. Zet de data onder de `user`-key in de Context-state;
     2. Zet `status` op `done`;
@@ -118,15 +91,14 @@ volgende:
 
 ### 6. Beschermde profieldata ophalen
 
-Je implementeert het ophalen van de gebruikersgegevens op de profielpagina. Het *emailadres* en *gebruikersnaam* lees je
-uit de Context. De "Strikt geheime profiel-content" vraag je op middels een request naar het beveiligde endpoint (zie
-documentatie over het `/660/private-content` endpoint).
+Je implementeert het ophalen van de geheime gegevens op de profielpagina. Het *emailadres* lees je
+uit de Context. De "Strikt geheime profiel-content" vraag je op middels een request naar het beveiligde endpoint `secrets`
 
 ## Stappenplan
 
 Als je niet zo goed weet waar je moet beginnen, kun je onderstaand stappenplan volgen:
 
-1. Start de fake-server (zodat hij op port 3000 draait) en daarna pas jouw eigen project.
+1. Configureer de NOVI API met het aangeleverde JSON-bestand
 
 2. Breidt de Context-state uit met een `user`-key. Vergeet niet om het context-data object zo aan te passen dat zowel de
    property `user` als de property `isAuth` worden meegegeven!
